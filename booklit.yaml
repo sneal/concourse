@@ -1,0 +1,56 @@
+---
+jobs:
+  - name: job-pass
+    public: true
+    plan:
+      - task: simple-output
+        config:
+#          outputs:
+#          - name: foo
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: busybox }
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              #!/bin/bash
+              echo "I am about to write hello"
+              #echo "HELLLLLLLLLLLOOOOOOOOOO" > /tmp/build/foo/foo.txt
+              echo done
+#      - task: simple-input
+#        config:
+#          inputs:
+#          - name: foo
+#          platform: linux
+#          image_resource:
+#            type: registry-image
+#            source: { repository: busybox }
+#          run:
+#            path: sh
+#            args:
+#            - -c
+#            - |
+#              #!/bin/bash
+#              echo "I am about to read hello"
+#              cat /tmp/build/foo/foo.txt
+#              echo done
+
+  #- name: job-fail
+  #  public: true
+  #  plan:
+  #    - task: exit-1
+  #      config:
+  #        platform: linux
+  #        image_resource:
+  #          type: registry-image
+  #          source: { repository: busybox }
+  #        run:
+  #          path: sh
+  #          args:
+  #          - -c
+  #          - |
+  #            #!/bin/bash
+  #            exit 1<Paste>

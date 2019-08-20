@@ -7,6 +7,7 @@ FROM concourse/dev
 WORKDIR /src
 COPY go.mod .
 COPY go.sum .
+COPY kube-config /root/.kube/config
 RUN grep '^replace' go.mod || go mod download
 
 # build Concourse without using 'packr' and set up a volume so the web assets

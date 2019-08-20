@@ -30,23 +30,23 @@ services:
       CONCOURSE_MAIN_TEAM_LOCAL_USER: test
       CONCOURSE_CLUSTER_NAME: dev
 
-  worker:
-    build: .
-    image: concourse/concourse:local
-    command: worker
-    privileged: true
-    depends_on: [web]
-    ports:
-    - 7777:7777
-    - 7788:7788
-    stop_signal: SIGUSR2
-    environment:
-      CONCOURSE_LOG_LEVEL: debug
-      CONCOURSE_TSA_HOST: web:2222
-
-      # avoid using loopbacks
-      CONCOURSE_BAGGAGECLAIM_DRIVER: overlay
-
-      # so we can reach Garden/Baggageclaim for debugging
-      CONCOURSE_BIND_IP: 0.0.0.0
-      CONCOURSE_BAGGAGECLAIM_BIND_IP: 0.0.0.0
+#  worker:
+#    build: .
+#    image: concourse/concourse:local
+#    command: worker
+#    privileged: true
+#    depends_on: [web]
+#    ports:
+#    - 7777:7777
+#    - 7788:7788
+#    stop_signal: SIGUSR2
+#    environment:
+#      CONCOURSE_LOG_LEVEL: debug
+#      CONCOURSE_TSA_HOST: web:2222
+#
+#      # avoid using loopbacks
+#      CONCOURSE_BAGGAGECLAIM_DRIVER: overlay
+#
+#      # so we can reach Garden/Baggageclaim for debugging
+#      CONCOURSE_BIND_IP: 0.0.0.0
+#      CONCOURSE_BAGGAGECLAIM_BIND_IP: 0.0.0.0
